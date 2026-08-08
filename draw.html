@@ -772,4 +772,937 @@ textarea:focus {
 
   margin-top: 20px;
 
-  color: #
+  color: #b76e8a;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+}
+
+
+/* CONFETTI */
+
+.confetti {
+
+  position: fixed;
+
+  top: -20px;
+
+  z-index: 999;
+
+  pointer-events: none;
+
+  border-radius: 3px;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+  body {
+
+    padding:
+      18px 10px 40px;
+
+  }
+
+
+  .logo img {
+
+    width: 185px;
+
+  }
+
+
+  .card {
+
+    padding:
+      30px 15px;
+
+    border-radius: 25px;
+
+  }
+
+
+  h1 {
+
+    font-size: 32px;
+
+  }
+
+
+  .spinning-name {
+
+    font-size: 25px;
+
+  }
+
+
+  .winner-name {
+
+    font-size: 34px;
+
+  }
+
+
+  .draw-button {
+
+    width: 100%;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+  <div class="logo">
+
+    <img
+      src="logo.PNG"
+      alt="Me To You Designs"
+    >
+
+  </div>
+
+
+  <div class="subtitle">
+
+    LIVE GIVEAWAY DRAW
+
+  </div>
+
+
+  <div class="live-time">
+
+    <div
+      class="live-date"
+      id="liveDate"
+    >
+      Loading date...
+    </div>
+
+    <div
+      class="live-clock"
+      id="liveClock"
+    >
+      Loading time...
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+
+    <div class="eyebrow">
+
+      GIVEAWAY
+
+    </div>
+
+
+    <h1>
+
+      Let's Draw A Winner! 🎉
+
+    </h1>
+
+
+    <p class="intro">
+
+      Everyone who entered is shown below.
+      When you're ready, start the draw
+      and one lucky winner will be selected.
+
+    </p>
+
+
+    <div class="prize">
+
+      <div class="prize-icon">
+
+        ❤️
+
+      </div>
+
+      <div class="prize-title">
+
+        Personalised Memorial Print
+
+      </div>
+
+      <div class="prize-text">
+
+        One lucky winner will receive a
+        personalised memorial print,
+        created especially for them.
+
+      </div>
+
+    </div>
+
+
+    <div class="entry-section">
+
+
+      <div class="entry-heading">
+
+        <strong>
+
+          Giveaway Entries
+
+        </strong>
+
+
+        <span
+          class="entry-count"
+          id="entryCount"
+        >
+
+          0 Entries
+
+        </span>
+
+      </div>
+
+
+      <textarea
+        id="namesInput"
+        placeholder="Enter one name per line..."
+      ></textarea>
+
+
+      <div class="helper">
+
+        Enter one name per line.
+        The full list will be visible before
+        the draw starts.
+
+      </div>
+
+
+      <div
+        class="entry-list"
+        id="entryList"
+      ></div>
+
+
+    </div>
+
+
+    <div class="draw-area">
+
+
+      <div class="draw-label">
+
+        🎰 RANDOM DRAW
+
+      </div>
+
+
+      <div
+        class="spinning-name"
+        id="spinningName"
+      >
+
+        READY?
+
+      </div>
+
+
+      <button
+        class="draw-button"
+        id="drawButton"
+      >
+
+        🎉 START THE DRAW 🎉
+
+      </button>
+
+
+    </div>
+
+
+    <div
+      class="winner"
+      id="winner"
+    >
+
+
+      <div class="winner-card">
+
+
+        <div class="winner-label">
+
+          🏆 WE HAVE A WINNER 🏆
+
+        </div>
+
+
+        <div
+          class="winner-name"
+          id="winnerName"
+        >
+        </div>
+
+
+        <div class="congratulations">
+
+          Congratulations! 🥳❤️
+
+        </div>
+
+
+        <div class="winner-prize">
+
+          You have won a
+          <strong>
+            Personalised Memorial Print
+          </strong>
+          from Me To You Designs.
+
+        </div>
+
+
+        <div
+          class="drawn-time"
+          id="drawnTime"
+        >
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="thank-you">
+
+      Thank you so much to everyone who
+      entered my giveaway and supported
+      my small business. ❤️
+
+      <br><br>
+
+      Good luck everyone! 🎉
+
+    </div>
+
+
+    <div class="business">
+
+      Me To You Designs
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+
+function updateClock() {
+
+  const now = new Date();
+
+
+  document.getElementById(
+    "liveDate"
+  ).textContent =
+    now.toLocaleDateString(
+      "en-GB",
+      {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }
+    );
+
+
+  document.getElementById(
+    "liveClock"
+  ).textContent =
+    now.toLocaleTimeString(
+      "en-GB",
+      {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+      }
+    );
+
+}
+
+
+updateClock();
+
+setInterval(
+  updateClock,
+  1000
+);
+
+
+const namesInput =
+  document.getElementById(
+    "namesInput"
+  );
+
+
+const entryList =
+  document.getElementById(
+    "entryList"
+  );
+
+
+const entryCount =
+  document.getElementById(
+    "entryCount"
+  );
+
+
+const drawButton =
+  document.getElementById(
+    "drawButton"
+  );
+
+
+const spinningName =
+  document.getElementById(
+    "spinningName"
+  );
+
+
+const winner =
+  document.getElementById(
+    "winner"
+  );
+
+
+const winnerName =
+  document.getElementById(
+    "winnerName"
+  );
+
+
+const drawnTime =
+  document.getElementById(
+    "drawnTime"
+  );
+
+
+function getNames() {
+
+  return namesInput.value
+    .split("\n")
+    .map(
+      name => name.trim()
+    )
+    .filter(
+      name => name.length > 0
+    );
+
+}
+
+
+function updateEntries() {
+
+  const names =
+    getNames();
+
+
+  entryList.innerHTML = "";
+
+
+  names.forEach(
+    (name, index) => {
+
+      const entry =
+        document.createElement(
+          "div"
+        );
+
+
+      entry.className =
+        "entry";
+
+
+      const number =
+        document.createElement(
+          "span"
+        );
+
+
+      number.className =
+        "entry-number";
+
+
+      number.textContent =
+        index + 1;
+
+
+      const nameText =
+        document.createElement(
+          "span"
+        );
+
+
+      nameText.textContent =
+        name;
+
+
+      entry.appendChild(
+        number
+      );
+
+
+      entry.appendChild(
+        nameText
+      );
+
+
+      entryList.appendChild(
+        entry
+      );
+
+    }
+  );
+
+
+  entryCount.textContent =
+    names.length +
+    (
+      names.length === 1
+        ? " Entry"
+        : " Entries"
+    );
+
+}
+
+
+namesInput.addEventListener(
+  "input",
+  updateEntries
+);
+
+
+drawButton.addEventListener(
+  "click",
+  startDraw
+);
+
+
+function startDraw() {
+
+  const names =
+    getNames();
+
+
+  if (names.length < 2) {
+
+    alert(
+      "Please enter at least 2 names before starting the draw."
+    );
+
+    return;
+
+  }
+
+
+  namesInput.disabled =
+    true;
+
+
+  drawButton.disabled =
+    true;
+
+
+  winner.style.display =
+    "none";
+
+
+  let countdown =
+    3;
+
+
+  spinningName.className =
+    "spinning-name countdown";
+
+
+  spinningName.textContent =
+    countdown;
+
+
+  const countdownTimer =
+    setInterval(
+      () => {
+
+        countdown--;
+
+
+        if (countdown > 0) {
+
+          spinningName.textContent =
+            countdown;
+
+        }
+
+        else {
+
+          clearInterval(
+            countdownTimer
+          );
+
+
+          spinningName.className =
+            "spinning-name";
+
+
+          spinningName.textContent =
+            "GO! 🎉";
+
+
+          setTimeout(
+            () => {
+
+              spinNames(names);
+
+            },
+            600
+          );
+
+        }
+
+      },
+      1000
+    );
+
+}
+
+
+function spinNames(names) {
+
+  spinningName.classList.add(
+    "active"
+  );
+
+
+  drawButton.textContent =
+    "🎰 DRAWING...";
+
+
+  let elapsed =
+    0;
+
+
+  let speed =
+    55;
+
+
+  const duration =
+    7500;
+
+
+  function spin() {
+
+
+    const randomName =
+      names[
+        Math.floor(
+          Math.random() *
+          names.length
+        )
+      ];
+
+
+    spinningName.textContent =
+      randomName;
+
+
+    elapsed += speed;
+
+
+    if (
+      elapsed >
+      duration * 0.45
+    ) {
+
+      speed = 75;
+
+    }
+
+
+    if (
+      elapsed >
+      duration * 0.62
+    ) {
+
+      speed = 105;
+
+    }
+
+
+    if (
+      elapsed >
+      duration * 0.76
+    ) {
+
+      speed = 160;
+
+    }
+
+
+    if (
+      elapsed >
+      duration * 0.87
+    ) {
+
+      speed = 240;
+
+    }
+
+
+    if (
+      elapsed >
+      duration * 0.94
+    ) {
+
+      speed = 400;
+
+    }
+
+
+    if (
+      elapsed < duration
+    ) {
+
+      setTimeout(
+        spin,
+        speed
+      );
+
+    }
+
+    else {
+
+      finishDraw(names);
+
+    }
+
+  }
+
+
+  spin();
+
+}
+
+
+function finishDraw(names) {
+
+
+  spinningName.classList.remove(
+    "active"
+  );
+
+
+  const selectedWinner =
+    names[
+      Math.floor(
+        Math.random() *
+        names.length
+      )
+    ];
+
+
+  spinningName.textContent =
+    selectedWinner;
+
+
+  winnerName.textContent =
+    selectedWinner;
+
+
+  const now =
+    new Date();
+
+
+  const date =
+    now.toLocaleDateString(
+      "en-GB",
+      {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }
+    );
+
+
+  const time =
+    now.toLocaleTimeString(
+      "en-GB",
+      {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+      }
+    );
+
+
+  drawnTime.innerHTML =
+    "Winner drawn on " +
+    date +
+    "<br>" +
+    "at " +
+    time;
+
+
+  winner.style.display =
+    "block";
+
+
+  drawButton.textContent =
+    "🏆 WINNER DRAWN";
+
+
+  createConfetti();
+
+}
+
+
+function createConfetti() {
+
+
+  const amount =
+    220;
+
+
+  for (
+    let i = 0;
+    i < amount;
+    i++
+  ) {
+
+
+    const piece =
+      document.createElement(
+        "div"
+      );
+
+
+    piece.className =
+      "confetti";
+
+
+    piece.style.left =
+      Math.random() *
+      100 +
+      "vw";
+
+
+    piece.style.width =
+      Math.random() * 8 +
+      6 +
+      "px";
+
+
+    piece.style.height =
+      Math.random() * 12 +
+      8 +
+      "px";
+
+
+    piece.style.background =
+      [
+        "#c9829d",
+        "#ad5f7d",
+        "#f2bfd0",
+        "#ffffff"
+      ][
+        Math.floor(
+          Math.random() * 4
+        )
+      ];
+
+
+    const duration =
+      Math.random() * 3 +
+      3;
+
+
+    piece.animate(
+      [
+        {
+          transform:
+            "translateY(0) rotate(0deg)",
+
+          opacity: 1
+        },
+
+        {
+          transform:
+            "translateY(110vh) rotate(900deg)",
+
+          opacity: 0
+        }
+
+      ],
+      {
+
+        duration:
+          duration * 1000,
+
+        delay:
+          Math.random() * 800,
+
+        easing:
+          "linear",
+
+        fill:
+          "forwards"
+
+      }
+    );
+
+
+    document.body.appendChild(
+      piece
+    );
+
+
+    setTimeout(
+      () => {
+
+        piece.remove();
+
+      },
+      7000
+    );
+
+  }
+
+}
+
+</script>
+
+</body>
+
+</html>
