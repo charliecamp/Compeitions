@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Me To You Designs | Giveaway Wheel</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top, #fff 0%, transparent 42%),
+    linear-gradient(135deg, #fff7fa, #f8dfe9);
+  color: #555;
+  padding: 20px 12px 60px;
+}
+
+.page {
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
+}
+
+.logo img {
+  width: 200px;
+  max-width: 70%;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.clock {
+  display: inline-block;
+  background: white;
+  border: 1px solid #efd5df;
+  border-radius: 18px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(120,70,90,.10);
+}
+
+.date {
+  font-size: 12px;
+  color: #888;
+}
+
+.time {
+  color: #b76e8a;
+  font-size: 21px;
+  font-weight: 800;
+  margin-top: 3px;
+}
+
+.card {
+  background: rgba(255,255,255,.97);
+  border-radius: 28px;
+  padding: 28px 16px;
+  box-shadow: 0 20px 60px rgba(100,50,70,.15);
+}
+
+h1 {
+  color: #b76e8a;
+  font-size: 34px;
+  margin: 0 0 8px;
+}
+
+.intro {
+  color: #777;
+  line-height: 1.6;
+  margin: 0 0 22px;
+}
+
+/* ENTRIES */
+
+.entries {
+  background: #fff8fa;
+  border: 1px solid #f0dce4;
+  border-radius: 20px;
+  padding: 18px;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.entry-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.entry-title strong {
+  color: #b76e8a;
+}
+
+.count {
+  background: #b76e8a;
+  color: white;
+  border-radius: 20px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  border: 1px solid #e5cbd5;
+  border-radius: 14px;
+  padding: 12px;
+  font: 15px Arial;
+  color: #555;
+  outline: none;
+}
+
+.entry-list {
+  margin-top: 15px;
+  max-height: 230px;
+  overflow-y: auto;
+  border-radius: 12px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: white;
+  padding: 9px;
+  border-bottom: 1px solid #f1e3e8;
+  font-size: 14px;
+}
+
+.number {
+  min-width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5dce5;
+  color: #b76e8a;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* WHEEL */
+
+.wheel-area {
+  background: linear-gradient(135deg,#fff5f8,#fce7ef);
+  border: 1px solid #efd3de;
+  border-radius: 25px;
+  padding: 25px 10px 30px;
+}
+
+.wheel-title {
+  color: #999;
+  font-size: 12px;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.wheel-wrap {
+  position: relative;
+  width: min(88vw, 430px);
+  height: min(88vw, 430px);
+  margin: 0 auto 25px;
+}
+
+.pointer {
+  position: absolute;
+  z-index: 10;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent;
+  border-top: 42px solid #b76e8a;
+  filter: drop-shadow(0 4px 4px rgba(0,0,0,.2));
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  border: 10px solid white;
+  box-shadow:
+    0 12px 30px rgba(100,50,70,.25),
+    inset 0 0 0 3px #d69ab0;
+  overflow: hidden;
+  transition:
+    transform 7s cubic-bezier(.12,.78,.15,1);
+  background:
+    conic-gradient(
+      #d995ad 0deg 51.42deg,
+      #f6d6e0 51.42deg 102.84deg,
+      #bc718f 102.84deg 154.26deg,
+      #f8e2e9 154.26deg 205.68deg,
+      #ce88a2 205.68deg 257.10deg,
+      #f3cbd8 257.10deg 308.52deg,
+      #b96888 308.52deg 359.94deg
+    );
+}
+
+.wheel-name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 42%;
+  transform-origin: 0 0;
+  text-align: center;
+  color: white;
+  font-weight: 800;
+  font-size: 13px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.35);
+  white-space: nowrap;
+}
+
+.wheel-centre {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: white;
+  border: 5px solid #c9829d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.18);
+}
+
+.spin-button {
+  border: none;
+  background: linear-gradient(135deg,#c9829d,#ad5f7d);
+  color: white;
+  font-size: 19px;
+  font-weight: 800;
+  padding: 17px 35px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(173,95,125,.35);
+}
+
+.spin-button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.status {
+  margin-top: 18px;
+  min-height: 35px;
+  color: #b76e8a;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+/* WINNER */
+
+.winner {
+  display: none;
+  margin-top: 25px;
+}
+
+.winner-card {
+  background: linear-gradient(135deg,#fff7fa,#fce5ed);
+  border: 3px solid #e7b7ca;
+  border-radius: 28px;
+  padding: 30px 15px;
+  animation: reveal .9s cubic-bezier(.17,.67,.35,1.4);
+}
+
+@keyframes reveal {
+  0% {
+    transform: scale(.2) rotate(-8deg);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.08) rotate(2deg);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.winner-label {
+  color: #999;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.winner-name {
+  color: #b76e8a;
+  font-size: 43px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 14px 0;
+  word-break: break-word;
+}
+
+.congrats {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.prize {
+  margin-top: 10px;
+  color: #777;
+  line-height: 1.6;
+}
+
+.draw-time {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid #eadde2;
+  color: #999;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.confetti {
+  position: fixed;
+  top: -30px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+@media(max-width:500px) {
+
+  h1 {
+    font-size: 29px;
+  }
+
+  .wheel-name {
+    font-size: 10px;
+  }
+
+  .wheel-centre {
+    width: 58px;
+    height: 58px;
+    font-size: 22px;
+  }
+
+  .winner-name {
+    font-size: 34px;
+  }
+
+  .spin-button {
+    width: 100%;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="logo">
+    <img src="logo.PNG" alt="Me To You Designs">
+  </div>
+
+  <div class="subtitle">
+    ✨ LIVE GIVEAWAY DRAW ✨
+  </div>
+
+  <div class="clock">
+    <div class="date" id="date"></div>
+    <div class="time" id="time"></div>
+  </div>
+
+  <div class="card">
+
+    <h1>Spin The Wheel! 🎉</h1>
+
+    <p class="intro">
+      All giveaway entries are shown below.
+      Once you're happy, spin the wheel to
+      randomly select the winner.
+    </p>
+
+    <div class="entries">
+
+      <div class="entry-title">
+
+        <strong>Giveaway Entries</strong>
+
+        <span class="count" id="count">
+          0 Entries
+        </span>
+
+      </div>
+
+      <textarea
+        id="names"
+        placeholder="Enter one name per line..."
+      ></textarea>
+
+      <div
+        class="entry-list"
+        id="entryList"
+      ></div>
+
+    </div>
+
+    <div class="wheel-area">
+
+      <div class="wheel-title">
+        🎰 RANDOM WHEEL
+      </div>
+
+      <div class="wheel-wrap">
+
+        <div class="pointer"></div>
+
+        <div
+          class="wheel"
+          id="wheel"
+        ></div>
+
+        <div class="wheel-centre">
+          🎉
+        </div>
+
+      </div>
+
+      <div
+        class="status"
+        id="status"
+      >
+        READY?
+      </div>
+
+      <button
+        class="spin-button"
+        id="spin"
+      >
+        🎉 SPIN THE WHEEL 🎉
+      </button>
+
+    </div>
+
+    <div
+      class="winner"
+      id="winner"
+    >
+
+      <div class="winner-card">
+
+        <div class="winner-label">
+          🏆 WE HAVE A WINNER 🏆
+        </div>
+
+        <div
+          class="winner-name"
+          id="winnerName"
+        ></div>
+
+        <div class="congrats">
+          🎉 Congratulations! 🥳❤️
+        </div>
+
+        <div class="prize">
+          You have won a
+          <strong>Personalised Memorial Print</strong>
+          from Me To You Designs.
+        </div>
+
+        <div
+          class="draw-time"
+          id="drawTime"
+        ></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const namesInput =
+  document.getElementById("names");
+
+const entryList =
+  document.getElementById("entryList");
+
+const count =
+  document.getElementById("count");
+
+const wheel =
+  document.getElementById("wheel");
+
+const spinButton =
+  document.getElementById("spin");
+
+const status =
+  document.getElementById("status");
+
+const winner =
+  document.getElementById("winner");
+
+const winnerName =
+  document.getElementById("winnerName");
+
+const drawTime =
+  document.getElementById("drawTime");
+
+let currentRotation = 0;
+
+
+function updateClock() {
+
+  const now = new Date();
+
+  document.getElementById("date").textContent =
+    now.toLocaleDateString("en-GB", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+
+  document.getElementById("time").textContent =
+    now.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true
+    });
+
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
+
+
+function getNames() {
+
+  return namesInput.value
+    .split("\n")
+    .map(name => name.trim())
+    .filter(name => name);
+
+}
+
+
+function updateEntries() {
+
+  const names = getNames();
+
+  entryList.innerHTML = "";
+
+  names.forEach((name,index) => {
+
+    const row =
+      document.createElement("div");
+
+    row.className = "entry";
+
+    row.innerHTML =
+      `<span class="number">
+        ${index + 1}
+      </span>
+      <span>${name}</span>`;
+
+    entryList.appendChild(row);
+
+  });
+
+  count.textContent =
+    names.length +
+    (names.length === 1
+      ? " Entry"
+      : " Entries");
+
+  buildWheel(names);
+
+}
+
+
+namesInput.addEventListener(
+  "input",
+  updateEntries
+);
+
+
+function buildWheel(names) {
+
+  wheel.innerHTML = "";
+
+  if (!names.length) return;
+
+  const angle =
+    360 / names.length;
+
+  names.forEach((name,index) => {
+
+    const label =
+      document.createElement("div");
+
+    label.className =
+      "wheel-name";
+
+    label.textContent =
+      name;
+
+    const rotation =
+      index * angle + angle / 2;
+
+    label.style.transform =
+      `rotate(${rotation}deg)
+       translateY(-${wheel.offsetWidth * .38}px)
+       rotate(90deg)`;
+
+    wheel.appendChild(label);
+
+  });
+
+}
+
+
+function startSpin() {
+
+  const names =
+    getNames();
+
+  if (names.length < 2) {
+
+    alert(
+      "Please enter at least 2 names."
+    );
+
+    return;
+
+  }
+
+  spinButton.disabled = true;
+
+  namesInput.disabled = true;
+
+  winner.style.display = "none";
+
+  status.textContent =
+    "3";
+
+  setTimeout(() => {
+    status.textContent = "2";
+  }, 900);
+
+  setTimeout(() => {
+    status.textContent = "1";
+  }, 1800);
+
+  setTimeout(() => {
+
+    status.textContent =
+      "GOOD LUCK! 🎉";
+
+    spinWheel(names);
+
+  }, 2700);
+
+}
+
+
+function spinWheel(names) {
+
+  const winnerIndex =
+    Math.floor(
+      Math.random() * names.length
+    );
+
+  const slice =
+    360 / names.length;
+
+  /*
+    The selected slice is brought
+    underneath the pointer at the top.
+  */
+
+  const targetAngle =
+    360 -
+    (
+      winnerIndex * slice +
+      slice / 2
+    );
+
+  const extraSpins =
+    360 * 7;
+
+  currentRotation +=
+    extraSpins +
+    targetAngle;
+
+  wheel.style.transform =
+    `rotate(${currentRotation}deg)`;
+
+
+  setTimeout(() => {
+
+    revealWinner(
+      names[winnerIndex]
+    );
+
+  }, 7200);
+
+}
+
+
+function revealWinner(name) {
+
+  status.textContent =
+    "🎉 WE HAVE A WINNER! 🎉";
+
+  winnerName.textContent =
+    name;
+
+  const now =
+    new Date();
+
+  const date =
+    now.toLocaleDateString(
+      "en-GB",
+      {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }
+    );
+
+  const time =
+    now.toLocaleTimeString(
+      "en-GB",
+      {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+      }
+    );
+
+  drawTime.innerHTML =
+    "Winner drawn on " +
+    date +
+    "<br>" +
+    "at " +
+    time;
+
+  winner.style.display =
+    "block";
+
+  spinButton.textContent =
+    "🏆 WINNER DRAWN";
+
+  createConfetti();
+
+  setTimeout(() => {
+
+    winner.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }, 500);
+
+}
+
+
+function createConfetti() {
+
+  for (
+    let i = 0;
+    i < 300;
+    i++
+  ) {
+
+    const piece =
+      document.createElement("div");
+
+    piece.className =
+      "confetti";
+
+    piece.style.left =
+      Math.random() * 100 + "vw";
+
+    piece.style.width =
+      Math.random() * 10 + 5 + "px";
+
+    piece.style.height =
+      Math.random() * 14 + 8 + "px";
+
+    piece.style.background =
+      [
+        "#c9829d",
+        "#ad5f7d",
+        "#f2bfd0",
+        "#ffffff",
+        "#e7a9bd"
+      ][
+        Math.floor(
+          Math.random() * 5
+        )
+      ];
+
+    piece.animate(
+      [
+        {
+          transform:
+            "translateY(-30px) rotate(0deg)",
+          opacity: 1
+        },
+        {
+          transform:
+            "translateY(110vh) rotate(1200deg)",
+          opacity: 0
+        }
+      ],
+      {
+        duration:
+          (Math.random() * 3 + 3) * 1000,
+
+        delay:
+          Math.random() * 1000,
+
+        easing: "linear",
+
+        fill: "forwards"
+      }
+    );
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => {
+      piece.remove();
+    }, 7000);
+
+  }
+
+}
+
+
+spinButton.addEventListener(
+  "click",
+  startSpin
+);
+
+</script>
+
+</body>
+</html>
